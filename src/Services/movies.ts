@@ -1,7 +1,14 @@
-import axios from 'axios'; 
-import { baseUrlMovie } from '../configApi'; 
+import axios, { AxiosRequestConfig } from 'axios';
+import { baseApiUpi, apiKey } from '../configApi';
 
-export function getMovies () {
-    const url = baseUrlMovie("day", "trending"); 
-    return axios.get(url);
+export function getMovies() {
+    const url = `${baseApiUpi}/trending/movie/day`;
+
+    const config: AxiosRequestConfig = {
+        params: {
+            api_key: apiKey,
+            language: "pt-BR"
+        }
+    }
+    return axios.get(url, config);
 }
