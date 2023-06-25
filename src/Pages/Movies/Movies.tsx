@@ -2,9 +2,10 @@ import { useGetMovies } from '../../Hooks/MovieHook'
 
 const Movies = () => {
 
-    const { data } = useGetMovies();
+    const { data: moviesData } = useGetMovies();
+    const movies = moviesData?.data
 
-    console.log(data)
+    console.log(movies); 
 
     return (
         <div>

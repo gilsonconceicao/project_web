@@ -1,3 +1,4 @@
+import Menu from "./Components/Menu/Menu";
 import { Routers } from "./Routes/Routes"
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
@@ -7,6 +8,7 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
+        <Menu />
         <Routers />
       </QueryClientProvider>
     </>
