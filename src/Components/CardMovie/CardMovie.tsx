@@ -3,28 +3,41 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Typography from '@mui/material/Typography'; 
+import { Favorite, Edit } from '@mui/icons-material'; 
 
-export default function CardMovie() {
+type CardMovieProps = {
+    title: string; 
+    image?: string; 
+    altImage?: string; 
+    description?: string; 
+    onViewOption?: () => void;
+    onLike?: () => void;
+}
+
+export default function CardMovie({ image, title, description, altImage, onViewOption, onLike }: CardMovieProps) {
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardMedia
-                sx={{ height: 140 }}
-                image="/static/images/cards/contemplative-reptile.jpg"
-                title="green iguana"
+                sx={{ height: 400, width: '100%', backgroundImage: 'initial', backgroundSize: 'cover' }}
+                image={`https://image.tmdb.org/t/p/w300/${image}`}
+                title={altImage}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    Lizard
+                    {title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
+                    {description}
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
+                <Button size="small" onClick={onLike}>
+                    <Favorite />
+                </Button>
+                <Button size="small" onClick={onViewOption}>
+                    <Edit />
+                </Button>
             </CardActions>
         </Card>
     );
