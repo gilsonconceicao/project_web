@@ -12,3 +12,15 @@ export function getMovies() {
     }
     return axios.get(url, config);
 }
+
+export function getMovieById(movieId: string) {
+    const url = `${baseApiUpi}/movie/${movieId}`;
+
+    const config: AxiosRequestConfig = {
+        params: {
+            api_key: apiKey,
+            language: "pt-BR"
+        }
+    }
+    return axios.get(url, config);
+}

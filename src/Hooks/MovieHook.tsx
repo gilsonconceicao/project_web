@@ -1,11 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getMovies } from "../Services/movies";
-import { AxiosResponse } from "axios";
+import { getMovieById, getMovies } from "../Services/movies";
 
 type MovieType = {
   adult: boolean;
   backdrop_path: string;
-  genre_ids: [];
+  genres: {id: number, name: string}[];
   id: number;
   media_type: string;
   original_language: string;
@@ -15,12 +14,13 @@ type MovieType = {
   poster_path: string;
   release_date: string;
   title: string;
+  tagline: string;
   video: boolean;
   vote_average: number;
 };
 
 type MovieRequesType = {
-    results: MovieType[];
+  results: MovieType[];
 };
 
 export function useGetMovies() {
@@ -28,7 +28,19 @@ export function useGetMovies() {
     queryKey: ["get-movie"],
     queryFn: async () => {
       const requisicao = await getMovies();
-        return requisicao.data as MovieRequesType;
+      return requisicao.data as MovieRequesType;
+    },
+  });
+
+  return { data, isFetching, error, refetch };
+}
+
+export function useGetMovieById(movieId: string) {
+  const { data, isFetching, error, refetch } = useQuery({
+    queryKey: ["get-movie-by-id", movieId],
+    queryFn: async () => {
+      const requisicao = await getMovieById(movieId);
+      return requisicao.data as MovieType;
     },
   });
 
