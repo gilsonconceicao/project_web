@@ -12,7 +12,7 @@ const WebMovies = () => {
             m='10% auto'
         >
             <Grid>
-                <Typography variant='h4' textAlign='center' mb={1}>Movies</Typography>
+                <Typography style={{ cursor: 'pointer'}} onClick={() => navigate('/')} variant='h4' textAlign='center' mb={1}>Movies</Typography>
                 <Grid>
                     <Button
                         variant='outlined'
@@ -21,7 +21,7 @@ const WebMovies = () => {
                     >
                         Entrar com convidado
                     </Button>
-                    <Button variant='contained'>Criar conta</Button>
+                    <Button variant='contained' onClick={() => navigate('/register')}>Criar conta</Button>
                 </Grid>
             </Grid>
         </Stack>

@@ -1,9 +1,9 @@
 import Menu from "./Components/Menu/Menu";
-import { Routers } from "./Routes/Routes"
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Routers } from "./Routes/Routes";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
-  const queryClient = new QueryClient(); 
+  const queryClient = new QueryClient();
 
   return (
     <>
@@ -12,7 +12,7 @@ function App() {
         <Routers />
       </QueryClientProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
