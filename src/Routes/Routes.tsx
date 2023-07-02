@@ -12,11 +12,11 @@ export function Routers() {
   const { isAuthenticated, stepAccess } = useAuth();
 
   const isPrivateRoute = (): boolean => {
-    if (isAuthenticated && stepAccess === 'logged') {
+    if (isAuthenticated && stepAccess === "logged") {
       return true;
     }
     return false;
-  }
+  };
 
   return (
     <BrowserRouter>
@@ -24,6 +24,7 @@ export function Routers() {
         <Route path="/" element={<AuthHome />}>
           {!isPrivateRoute() ? (
             <>
+              <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/preview" element={<WebMovies />} />
             </>
@@ -32,7 +33,6 @@ export function Routers() {
               <Route path="/profile" element={<UseProfile />} />
               <Route path="/preview" element={<WebMovies />} />
               <Route path="/movies" element={<WebMovies />} />
-              <Route path="/login" element={<Login />} />
               <Route path="/filmes" element={<Movies />} />
               <Route path="/filmes/Detalhes/:id" element={<Details />} />
             </>

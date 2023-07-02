@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, styled } from "@mui/material";
+import { useAuth } from "../../Contexts/AuthContext";
 
 const Profile = () => {
   const navigate = useNavigate();
-  
+  const { setAuthenticated } = useAuth();
+
   useEffect(() => {
     // Acessar as informações do localStorage
     const username = localStorage.getItem("username");
@@ -18,7 +20,13 @@ const Profile = () => {
   }, []);
 
   const handleGoBack = () => {
-    navigate('/preview');
+    navigate("/preview");
+  };
+
+  const CleanLocalStorage = () => {
+    localStorage.clear();
+    setAuthenticated(false);
+    navigate("/");
   };
 
   const ContainerProfile = styled("div")({
@@ -33,7 +41,9 @@ const Profile = () => {
     <>
       <ContainerProfile>
         <h2 style={{ textAlign: "center" }}>Perfil do Usuário</h2>
-        <h4 style={{ textAlign: "center", color: "green" }}>Você está logado!</h4>
+        <h4 style={{ textAlign: "center", color: "green" }}>
+          Você está logado!
+        </h4>
         <Box m={3} />
         <div>
           <p>
@@ -58,6 +68,18 @@ const Profile = () => {
           onClick={handleGoBack}
         >
           Voltar
+        </button>
+        <Box m={1} />
+        <button
+          style={{
+            width: "200px",
+            margin: "auto",
+            display: "block",
+            cursor: "pointer",
+          }}
+          onClick={CleanLocalStorage}
+        >
+          Deletar Usuário
         </button>
       </ContainerProfile>
     </>
