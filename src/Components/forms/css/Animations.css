@@ -11,7 +11,8 @@ body {
 .wrapper {
   position: relative;
   width: 380px;
-  height: 440px;
+  max-height: 450px;
+  position: relative;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
@@ -22,6 +23,21 @@ body {
   overflow: hidden;
   margin: 30px auto;
   transition: transform 0.5s ease, height 0.2s ease;
+}
+
+.errorMessage {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  width: 370px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  margin-top: 10;
+  margin-bottom: -30;
 }
 
 /* input {
