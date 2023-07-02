@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getMovieById, getMovies } from "../Services/movies";
 
-type MovieType = {
+export type MovieType = {
   adult: boolean;
   backdrop_path: string;
   genres: {id: number, name: string}[];

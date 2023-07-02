@@ -7,6 +7,7 @@ import Login from "../Components/forms/Login/Login";
 import UseProfile from "../Components/forms/UserProfile";
 import { AuthHome } from "../Pages/AuthHome/AuthHome";
 import { useAuth } from "../Contexts/AuthContext";
+import FavoredMovies from "../Pages/FavoredMovies/FavoredMovies";
 
 export function Routers() {
   const { isAuthenticated, stepAccess } = useAuth();
@@ -27,6 +28,7 @@ export function Routers() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/preview" element={<WebMovies />} />
+              <Route path="/filmes" element={<Movies />} />
             </>
           ) : (
             <>
@@ -34,6 +36,7 @@ export function Routers() {
               <Route path="/preview" element={<WebMovies />} />
               <Route path="/movies" element={<WebMovies />} />
               <Route path="/filmes" element={<Movies />} />
+              <Route path="/filmes-favoritos" element={<FavoredMovies />} />
               <Route path="/filmes/Detalhes/:id" element={<Details />} />
             </>
           )}

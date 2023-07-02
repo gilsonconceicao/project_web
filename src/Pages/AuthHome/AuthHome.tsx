@@ -12,11 +12,9 @@ export const AuthHome = () => {
     const { pathname } = useLocation();
     const { stepAccess, isAuthenticated} = useAuth();
 
-    useEffect(() => {
+    useEffect(() => { 
         const optionsToRedirectUser: RedirectOptionsWithKey = {
-            "initial": () => {
-                isAuthenticated ? navigate('/preview') : navigate('/register')
-            },
+            "initial": () => navigate('/preview'),
             "register": () => navigate('/register'),
             "login": () => navigate('/login'),
             'logged': () => {
