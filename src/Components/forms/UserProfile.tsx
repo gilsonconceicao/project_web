@@ -4,7 +4,7 @@ import { Box, styled } from "@mui/material";
 
 const Profile = () => {
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     // Acessar as informações do localStorage
     const username = localStorage.getItem("username");
@@ -18,7 +18,7 @@ const Profile = () => {
   }, []);
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate('/preview');
   };
 
   const ContainerProfile = styled("div")({
@@ -33,6 +33,7 @@ const Profile = () => {
     <>
       <ContainerProfile>
         <h2 style={{ textAlign: "center" }}>Perfil do Usuário</h2>
+        <h4 style={{ textAlign: "center", color: "green" }}>Você está logado!</h4>
         <Box m={3} />
         <div>
           <p>

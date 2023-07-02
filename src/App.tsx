@@ -1,16 +1,17 @@
-import Menu from "./Components/Menu/Menu";
+import { AuthProvider } from "./Contexts/AuthContext";
 import { Routers } from "./Routes/Routes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
   const queryClient = new QueryClient();
-
+  
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <Menu />
-        <Routers />
-      </QueryClientProvider>
+      <AuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <Routers />
+        </QueryClientProvider>
+      </AuthProvider>
     </>
   );
 }
