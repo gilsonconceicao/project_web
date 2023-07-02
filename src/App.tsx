@@ -1,4 +1,5 @@
 import { AuthProvider } from "./Contexts/AuthContext";
+import { FavoredMovieProvider } from "./Contexts/FavoredMoviesContext";
 import { Routers } from "./Routes/Routes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -8,9 +9,11 @@ function App() {
   return (
     <>
       <AuthProvider>
-        <QueryClientProvider client={queryClient}>
-          <Routers />
-        </QueryClientProvider>
+        <FavoredMovieProvider>
+          <QueryClientProvider client={queryClient}>
+            <Routers />
+          </QueryClientProvider>
+        </FavoredMovieProvider>
       </AuthProvider>
     </>
   );

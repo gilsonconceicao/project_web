@@ -82,8 +82,10 @@ export default function SideMenu() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const CleanLocalStorage = () => {
-    localStorage.clear();
+  const CleanLocalStorage = async () => {
+    await localStorage.clear();
+    navigate("/");
+    return location.reload()
   };
 
   const menuId = "primary-search-account-menu";
@@ -110,8 +112,12 @@ export default function SideMenu() {
         Perfil
       </MenuItem>
       <MenuItem
+        onClick={() => navigate("/filmes-favoritos")}
+      >
+        Filmes favoritos
+      </MenuItem>
+      <MenuItem
         onClick={CleanLocalStorage}
-        onClickCapture={() => location.reload()}
       >
         Excluir Usuário
       </MenuItem>
