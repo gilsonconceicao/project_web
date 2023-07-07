@@ -85,7 +85,7 @@ export default function SideMenu() {
   const CleanLocalStorage = async () => {
     await localStorage.clear();
     navigate("/");
-    return location.reload()
+    return location.reload();
   };
 
   const menuId = "primary-search-account-menu";
@@ -111,16 +111,10 @@ export default function SideMenu() {
       >
         Perfil
       </MenuItem>
-      <MenuItem
-        onClick={() => navigate("/filmes-favoritos")}
-      >
+      <MenuItem onClick={() => navigate("/filmes-favoritos")}>
         Filmes favoritos
       </MenuItem>
-      <MenuItem
-        onClick={CleanLocalStorage}
-      >
-        Excluir Usuário
-      </MenuItem>
+      <MenuItem onClick={CleanLocalStorage}>Excluir Usuário</MenuItem>
     </Menu>
   );
 
@@ -170,7 +164,10 @@ export default function SideMenu() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ backgroundColor: "#222222" }}>
+      <AppBar
+        position="static"
+        style={{ padding: "10px", backgroundColor: "#0000ff" }}
+      >
         <Toolbar>
           <IconButton
             size="large"
@@ -203,6 +200,7 @@ export default function SideMenu() {
             <StyledInputBase
               placeholder="Procurar..."
               inputProps={{ "aria-label": "search" }}
+              // style={{ borderRadius: "50px" }}
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />

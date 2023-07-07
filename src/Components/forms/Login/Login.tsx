@@ -2,20 +2,28 @@ import { useState } from "react";
 import { Button } from "@material-ui/core";
 import { Mail, Lock } from "@material-ui/icons";
 import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Grid, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { TextFormField } from "../../TextFormField/TextFormField";
-import { TypeValidationloginData, loginDefaultValues, loginValidationSchema } from "./Schema/LoginValidationSchema";
+import {
+  TypeValidationloginData,
+  loginDefaultValues,
+  loginValidationSchema,
+} from "./Schema/LoginValidationSchema";
 import { useAuth } from "../../../Contexts/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
-  const {setStepAccess, setAuthenticated} = useAuth(); 
-  
-  const { handleSubmit, formState: { errors }, control } = useForm({
+  const { setStepAccess, setAuthenticated } = useAuth();
+
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm({
     resolver: yupResolver(loginValidationSchema()),
-    defaultValues: loginDefaultValues
+    defaultValues: loginDefaultValues,
   });
 
   const [submitError, setSubmitError] = useState("");
@@ -42,8 +50,8 @@ const Login = () => {
       if (storedEmail === email && storedPassword === password) {
         // Login bem-sucedido, redirecionar para a página de perfil
         navigate("/profile");
-        setAuthenticated(true); 
-        setStepAccess('logged'); 
+        setAuthenticated(true);
+        setStepAccess("logged");
       } else {
         // Login inválido
         setSubmitError("Credenciais inválidas. Por favor, tente novamente.");
@@ -78,14 +86,11 @@ const Login = () => {
             />
           </Grid>
         </Stack>
-        {submitError &&
-          <p className="errorMessage">
-            {submitError}
-          </p>}
+        {submitError && <p className="errorMessage">{submitError}</p>}
         <Box m={15} />
         <p>
           Não possui uma conta?{" "}
-          <Button color="primary" onClick={() => setStepAccess('register')}>
+          <Button color="primary" onClick={() => setStepAccess("register")}>
             Registrar
           </Button>
         </p>
